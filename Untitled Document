@@ -1,0 +1,116 @@
+:~/wp3-project-objectdetection$ pkg/com_bonseyes_base/bin/be-admin run --name import_data_train --config config.yml --force workflows/import_data.yml --param images url volume://data/imagesyoutubeBB_T.tar.gz --param labels url volume://data/youtube_boundingboxes_detection_train.csv
+17-06-2018:22:21:22 INFO     [format.py:134] Registering format com.bonseyes.data.blob.0.1
+17-06-2018:22:21:22 INFO     [format.py:134] Registering format com.bonseyes.data.directory.0.1
+17-06-2018:22:21:22 INFO     [format.py:134] Registering format com.bonseyes.metadata.simple.0.1
+17-06-2018:22:21:22 INFO     [format.py:134] Registering format com.bonseyes.metrics.blob.0.1
+17-06-2018:22:21:23 INFO     [simple_executor.py:993] Creating execution import_data_train
+17-06-2018:22:21:23 INFO     [simple_executor.py:690] Saving context
+17-06-2018:22:21:23 INFO     [simple_executor.py:699] Saving arguments
+17-06-2018:22:21:23 INFO     [simple_executor.py:724] Creating internal state
+17-06-2018:22:21:23 INFO     [simple_executor.py:759] Creating application on runtime
+17-06-2018:22:21:23 INFO     [simple_executor.py:823] Creating worker import_worker
+17-06-2018:22:21:23 INFO     [simple_executor.py:217] worker import_worker: Creating tool instance
+17-06-2018:22:21:23 INFO     [simple_runtime.py:420] image 9d49ac14-97a5-4b2d-ac90-e41f5b419810: Creating image
+17-06-2018:22:21:23 INFO     [simple_runtime.py:519] image 9d49ac14-97a5-4b2d-ac90-e41f5b419810: slice 0: Sending build request
+17-06-2018:22:22:24 INFO     [simple_runtime.py:528] image 9d49ac14-97a5-4b2d-ac90-e41f5b419810: slice 0: Build request sent
+17-06-2018:22:22:24 INFO     [simple_runtime.py:519] image 9d49ac14-97a5-4b2d-ac90-e41f5b419810: slice 1: Sending build request
+17-06-2018:22:23:25 INFO     [simple_runtime.py:528] image 9d49ac14-97a5-4b2d-ac90-e41f5b419810: slice 1: Build request sent
+17-06-2018:22:23:26 INFO     [simple_runtime.py:519] image 9d49ac14-97a5-4b2d-ac90-e41f5b419810: slice 2: Sending build request
+17-06-2018:22:24:27 INFO     [simple_runtime.py:528] image 9d49ac14-97a5-4b2d-ac90-e41f5b419810: slice 2: Build request sent
+Traceback (most recent call last):
+  File "pkg/com_bonseyes_base/bin/be-admin", line 43, in <module>
+    main.main()
+  File "/home/z638420/wp3-project-objectdetection/pkg/com_bonseyes_base/lib/cli/__main__.py", line 63, in main
+    args.func(args)
+  File "/home/z638420/wp3-project-objectdetection/pkg/com_bonseyes_base/lib/cli/commands/run.py", line 446, in <lambda>
+    parser.set_defaults(func=lambda args: run(root_parser, parser, args))
+  File "/home/z638420/wp3-project-objectdetection/pkg/com_bonseyes_base/lib/cli/commands/run.py", line 335, in run
+    execution.execute()
+  File "/home/z638420/wp3-project-objectdetection/pkg/com_bonseyes_base/lib/impl/executor/simple_executor.py", line 824, in execute
+    worker.create_instance()
+  File "/home/z638420/wp3-project-objectdetection/pkg/com_bonseyes_base/lib/impl/executor/simple_executor.py", line 222, in create_instance
+    image.build()
+  File "/home/z638420/wp3-project-objectdetection/pkg/com_bonseyes_base/lib/impl/runtime/simple_runtime.py", line 543, in build
+    + str(data['errorDetail']) + "\n" + log_info)
+Exception: image 9d49ac14-97a5-4b2d-ac90-e41f5b419810: Error while building:
+ {'message': 'ADD failed: stat /var/lib/docker/tmp/docker-builder100617694/pkg/com_bonseyes_training_base/lib: no such file or directory'}
+Step 1/4 : FROM ubuntu:xenial
+ ---> 5e8b97a2a082
+Step 2/4 : RUN apt-get update &&     apt-get install -y --no-install-recommends             python3 python3-pip python3-setuptools python3-wheel &&     apt-get clean && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> f9b1050611fd
+Step 3/4 : RUN pip3 install Pillow --upgrade pip==9.0.3
+ ---> Using cache
+ ---> 4c10ca9c73bd
+Step 4/4 : LABEL "BE_RUNTIME_LABEL"='none'
+ ---> Using cache
+ ---> be2e5dbd1d98
+Successfully built be2e5dbd1d98
+Successfully tagged 9d49ac14-97a5-4b2d-ac90-e41f5b419810:f1e7cfd3-5886-4880-a154-9c06f1833666.0
+Step 1/20 : ARG BASE_IMAGE
+Step 2/20 : FROM ${BASE_IMAGE}
+ ---> be2e5dbd1d98
+Step 3/20 : ARG http_proxy
+ ---> Using cache
+ ---> d11b43431b33
+Step 4/20 : ARG no_proxy
+ ---> Using cache
+ ---> be86487a7f67
+Step 5/20 : ARG https_proxy
+ ---> Using cache
+ ---> f5f39d00b526
+Step 6/20 : ENV DEBIAN_FRONTEND noninteractive
+ ---> Using cache
+ ---> 802fbb5be822
+Step 7/20 : RUN apt-get update &&     apt-get install -y --no-install-recommends             python3 python3-pip python3-setuptools python3-wheel             uwsgi-plugin-python3 &&     apt-get clean && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> d9180ed3c758
+Step 8/20 : RUN pip3 install Flask==0.12.2 requests==2.18.4 uwsgidecorators==1.1.0 pyyaml==3.12 cbor==1.0.0                  pydevd numpy h5py jsonschema==2.6.0
+ ---> Using cache
+ ---> 07dba75b4c3b
+Step 9/20 : ADD pkg/com_bonseyes_base/images/base/configs/uwsgi.ini /etc/uwsgi/
+ ---> Using cache
+ ---> 2ff85a5abcec
+Step 10/20 : WORKDIR /app
+ ---> Using cache
+ ---> 08415f9911f0
+Step 11/20 : ENV PYTHONPATH /app:$PYTHONPATH
+ ---> Using cache
+ ---> ca89e986238b
+Step 12/20 : EXPOSE 80
+ ---> Using cache
+ ---> 4f439bdea405
+Step 13/20 : RUN mkdir /data && chown -R www-data.www-data /data
+ ---> Using cache
+ ---> e65ab0ebd20c
+Step 14/20 : VOLUME /data
+ ---> Using cache
+ ---> 7af48ede7bcc
+Step 15/20 : ADD pkg/com_bonseyes_base/images/base/app /app
+ ---> Using cache
+ ---> f8021d3225ee
+Step 16/20 : ADD pkg/com_bonseyes_base/lib /app/com_bonseyes_base/lib
+ ---> Using cache
+ ---> d4aa86a0c052
+Step 17/20 : ADD pkg/com_bonseyes_base/formats /app/com_bonseyes_base/formats
+ ---> Using cache
+ ---> d531d1ac26d8
+Step 18/20 : ADD pkg/com_bonseyes_base/schemas /app/com_bonseyes_base/schemas
+ ---> Using cache
+ ---> 1449c2123070
+Step 19/20 : CMD ["/usr/bin/uwsgi", "--ini", "/etc/uwsgi/uwsgi.ini", "--ini", "/app/app.ini"]
+ ---> Using cache
+ ---> 923167dc73c7
+Step 20/20 : LABEL "BE_RUNTIME_LABEL"='none'
+ ---> Using cache
+ ---> 08150fa10c7a
+Successfully built 08150fa10c7a
+Successfully tagged 9d49ac14-97a5-4b2d-ac90-e41f5b419810:f1e7cfd3-5886-4880-a154-9c06f1833666.1
+Step 1/6 : ARG BASE_IMAGE
+Step 2/6 : FROM ${BASE_IMAGE}
+ ---> 08150fa10c7a
+Step 3/6 : ADD lib /app
+ ---> Using cache
+ ---> e66b68d375f5
+Step 4/6 : ADD pkg/com_bonseyes_training_base/lib/ /app/com_bonseyes_training_base/lib/
+
