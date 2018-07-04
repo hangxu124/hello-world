@@ -1,0 +1,144 @@
+./build.py --platform=linux_host --cmake_options="-DLPDNN_PLUGINS=cpu_gemm,cpu_vanilla -DPKG_CBLAS_LIB=openblas -DLPDNN_ENABLE_BENCHMARK=ON -DLPDNN_SAMPLES=100"
+platform:  linux_host
+build path:  /home/z638420/wp4-lpdnn-sdk-build-linux_host
+Building docker for:  linux_host
+
+>> docker image build --quiet -t build-env-linux_host -f /home/z638420/wp4-lpdnn-sdk/cmake/pkg-cmake/platforms/linux_host/Dockerfile /home/z638420/wp4-lpdnn-sdk/cmake/pkg-cmake   (from: /home/z638420/wp4-lpdnn-sdk)
+
+sha256:2c29ae989dc15aef2c709e31b99ad6fac1f4030a960146550578981e09402932
+
+Building...
+
+>> docker run --rm -u 1002:1002 -v /home/z638420/wp4-lpdnn-sdk:/home/z638420/wp4-lpdnn-sdk -v /home/z638420/wp4-lpdnn-sdk-build-linux_host:/home/z638420/wp4-lpdnn-sdk-build-linux_host build-env-linux_host bash -c 'cd /home/z638420/wp4-lpdnn-sdk-build-linux_host ; cmake /home/z638420/wp4-lpdnn-sdk -DPLATFORM=linux_host -DCMAKE_ANDROID_NDK=$ANDROID_NDK_HOME  -DLPDNN_PLUGINS=cpu_gemm,cpu_vanilla -DPKG_CBLAS_LIB=openblas -DLPDNN_ENABLE_BENCHMARK=ON -DLPDNN_SAMPLES=100 ; make -j8 all'
+
+PLATFORM: linux_host
+-- Platform: linux_host
+CMAKE_SYSTEM_PROCESSOR x86_64
+-- No Computer Vision library specified : OpenCV used
+/home/z638420/wp4-lpdnn-sdk/ext/pkg-json/inc;/home/z638420/wp4-lpdnn-sdk/ext/pkg-json/src/include JSON_INCLUDE_DIRS
+-- Could NOT find PkgConfig (missing: PKG_CONFIG_EXECUTABLE) 
+-- Could NOT find GSL (missing: GSL_INCLUDE_DIR GSL_LIBRARY GSL_CBLAS_LIBRARY) (found version "")
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/alexnet
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/alexnet/model/float32 is empty, skipping.
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/alexnet/model/float32 is empty, skipping.
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/bc-mobilenet-ssd
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/googlenet
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/googlenet/model/float32 is empty, skipping.
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/googlenet/model/float32 is empty, skipping.
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/mobilenet-ssd
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/mobilenet-v2
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/mobilenet-v2/model/float32 is empty, skipping.
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/mobilenet-v2/model/float32 is empty, skipping.
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/mobilenet
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/mobilenet/model/float32 is empty, skipping.
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/mobilenet/model/float32 is empty, skipping.
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/resnet32
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/resnet32/model/float32 is empty, skipping.
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/resnet32/model/float32 is empty, skipping.
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/resnet50
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/resnet50/model/float32 is empty, skipping.
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/resnet50/model/float32 is empty, skipping.
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/squeezenet
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/squeezenet/model/float32 is empty, skipping.
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/squeezenet/model/float32 is empty, skipping.
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/vgg16
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/vgg16/model/float32 is empty, skipping.
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/vgg16/model/float32 is empty, skipping.
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/vgg19
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/vgg19/model/float32 is empty, skipping.
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-imagenet/models/vgg19/model/float32 is empty, skipping.
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/ref-mnist/models/lenet5
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/task-emotion/models/nv3dfi
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/task-emotion/models/nv3dfi/model/float32 is empty, skipping.
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/task-emotion/models/nv3dfi/model/float32 is empty, skipping.
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/task-emotion/models/sphereface
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/task-emotion/models/sphereface/model/float32 is empty, skipping.
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/task-emotion/models/sphereface/model/float32 is empty, skipping.
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-orientation/models/nv3dfi-fo
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-recognition/models/insightface/resnet34
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-recognition/models/insightface/resnet34/model/float32 is empty, skipping.
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-recognition/models/insightface/resnet34/model/float32 is empty, skipping.
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-recognition/models/insightface/resnet50
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-recognition/models/insightface/resnet50/model/float32 is empty, skipping.
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-recognition/models/insightface/resnet50/model/float32 is empty, skipping.
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-recognition/models/mtcnn/det1
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-recognition/models/mtcnn/det1/model/float32 is empty, skipping.
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-recognition/models/mtcnn/det1/model/float32 is empty, skipping.
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-recognition/models/mtcnn/det2
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-recognition/models/mtcnn/det2/model/float32 is empty, skipping.
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-recognition/models/mtcnn/det2/model/float32 is empty, skipping.
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-recognition/models/mtcnn/det3
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-recognition/models/mtcnn/det3/model/float32 is empty, skipping.
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-recognition/models/mtcnn/det3/model/float32 is empty, skipping.
+Building /home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-recognition/models/sphereface
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-recognition/models/sphereface/model/float32 is empty, skipping.
+/home/z638420/wp4-lpdnn-sdk/models/image/classification/task-face-recognition/models/sphereface/model/float32 is empty, skipping.
+MTCNN models not present, skip build of lpdnn_app_mtcnn
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/z638420/wp4-lpdnn-sdk-build-linux_host
+[  1%] Built target pkg_cblas
+[  5%] Built target cjson_project
+[  6%] Built target clog
+[  7%] Built target pthreadpool
+[ 11%] Built target blis_project
+[ 12%] Built target nv3dfi-boost
+[ 21%] Built target cpuinfo
+[ 25%] Built target nnpack_reference_layers
+[ 29%] Built target openblas_project
+[ 33%] Built target opencv_project
+[ 33%] Built target deps
+[ 33%] Built target test_gemm
+[ 34%] Built target lpdnn_bench_gemm
+[ 44%] Built target cpu_vanilla
+[ 46%] Built target nvisocv
+[ 51%] Built target cpu_gemm
+[ 52%] Built target lpdnn_plugin
+[ 59%] Built target lpdnn_core
+[ 60%] Generating images.h5
+[ 61%] Generating lpdnn_netspec.h, lpdnn_netspec.c, lpdnn_model.h, lpdnn_model.h5, model.bin
+[ 62%] Built target lpdnn_bench_conv
+[ 64%] Built target correctness_test
+[ 64%] Generating lpdnn_netspec.h, lpdnn_netspec.c, lpdnn_model.h, lpdnn_model.h5, model.bin
+[ 65%] Built target lpdnn_cpp
+[ 72%] Built target test_layers
+[ 72%] Built target ai-app
+[ 74%] Built target http_worker_lenet_deploy
+running generate
+Generating x86-64 instruction classes from opcodes 0.3.14
+[ 77%] Built target lpdnn_app_lenet_deploy
+Traceback (most recent call last):
+  File "caffe-to-lpdnn/caffe_to_lpdnn.py", line 117, in <module>
+    create_net_spec(args.spec, args.out_dir, args.h5weights, args.name, plugin_mngr, args.config, fix)
+  File "caffe-to-lpdnn/caffe_to_lpdnn.py", line 71, in create_net_spec
+    fix_point=fix_point)
+  File "/home/z638420/wp4-lpdnn-sdk/lpdnn/tools/caffe-to-lpdnn/netspec.py", line 65, in __init__
+    self._net.init_net(net_spec)
+  File "/home/z638420/wp4-lpdnn-sdk/lpdnn/tools/caffe-to-lpdnn/lpdnn_caffe_net.py", line 643, in init_net
+    raise Exception('Input layer for the network not found. First layer must'
+Exception: Input layer for the network not found. First layer mustbe the input layer
+Traceback (most recent call last):
+  File "caffe-to-lpdnn/caffe_to_lpdnn.py", line 117, in <module>
+    create_net_spec(args.spec, args.out_dir, args.h5weights, args.name, plugin_mngr, args.config, fix)
+  File "caffe-to-lpdnn/caffe_to_lpdnn.py", line 71, in create_net_spec
+    fix_point=fix_point)
+  File "/home/z638420/wp4-lpdnn-sdk/lpdnn/tools/caffe-to-lpdnn/netspec.py", line 65, in __init__
+    self._net.init_net(net_spec)
+  File "/home/z638420/wp4-lpdnn-sdk/lpdnn/tools/caffe-to-lpdnn/lpdnn_caffe_net.py", line 643, in init_net
+    raise Exception('Input layer for the network not found. First layer must'
+Exception: Input layer for the network not found. First layer mustbe the input layer
+make[2]: *** [models/image/classification/ref-imagenet/models/bc-mobilenet-ssd/lpdnn_netspec.h] Error 1
+make[2]: *** Waiting for unfinished jobs....
+models/image/classification/ref-imagenet/models/bc-mobilenet-ssd/CMakeFiles/http_worker_deploy.dir/build.make:87: recipe for target 'models/image/classification/ref-imagenet/models/bc-mobilenet-ssd/lpdnn_netspec.h' failed
+make[2]: *** [models/image/classification/ref-imagenet/models/mobilenet-ssd/lpdnn_netspec.h] Error 1
+models/image/classification/ref-imagenet/models/mobilenet-ssd/CMakeFiles/http_worker_MS_deploy.dir/build.make:87: recipe for target 'models/image/classification/ref-imagenet/models/mobilenet-ssd/lpdnn_netspec.h' failed
+CMakeFiles/Makefile2:1790: recipe for target 'models/image/classification/ref-imagenet/models/mobilenet-ssd/CMakeFiles/http_worker_MS_deploy.dir/all' failed
+make[1]: *** [models/image/classification/ref-imagenet/models/mobilenet-ssd/CMakeFiles/http_worker_MS_deploy.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+[ 77%] Built target peachpy
+CMakeFiles/Makefile2:1674: recipe for target 'models/image/classification/ref-imagenet/models/bc-mobilenet-ssd/CMakeFiles/http_worker_deploy.dir/all' failed
+make[1]: *** [models/image/classification/ref-imagenet/models/bc-mobilenet-ssd/CMakeFiles/http_worker_deploy.dir/all] Error 2
+Makefile:129: recipe for target 'all' failed
+make: *** [all] Error 2
+
+
