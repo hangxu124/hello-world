@@ -1,25 +1,90 @@
-
-
-
-Generating x86-64 instruction classes from opcodes 0.3.14
-[ 78%] Built target lpdnn_app_lenet_deploy
-Traceback (most recent call last):
-  File "caffe-to-lpdnn/caffe_to_lpdnn.py", line 104, in <module>
-    main()
-  File "caffe-to-lpdnn/caffe_to_lpdnn.py", line 84, in main
-    net.init_net(args.spec, args.model)
-  File "/home/z638420/wp4-lpdnn-sdk/lpdnn/tools/lib/lpdnn_caffe/lpdnn_net_caffe.py", line 715, in init_net
-    self._assignInputLayers()
-  File "/home/z638420/wp4-lpdnn-sdk/lpdnn/tools/lib/lpdnn_caffe/lpdnn_net_caffe.py", line 576, in _assignInputLayers
-    in_caffe_layers = self._find_input_caffe_layers(match)
-  File "/home/z638420/wp4-lpdnn-sdk/lpdnn/tools/lib/lpdnn_caffe/lpdnn_net_caffe.py", line 554, in _find_input_caffe_layers
-    assert len(in_this_bot) > 0
-AssertionError
-make[2]: *** [models/image/classification/ref-imagenet/models/mobilenet-ssd/lpdnn_netspec.h] Error 1
-models/image/classification/ref-imagenet/models/mobilenet-ssd/CMakeFiles/http_worker_deploy.dir/build.make:85: recipe for target 'models/image/classification/ref-imagenet/models/mobilenet-ssd/lpdnn_netspec.h' failed
-CMakeFiles/Makefile2:1636: recipe for target 'models/image/classification/ref-imagenet/models/mobilenet-ssd/CMakeFiles/http_worker_deploy.dir/all' failed
-make[1]: *** [models/image/classification/ref-imagenet/models/mobilenet-ssd/CMakeFiles/http_worker_deploy.dir/all] Error 2
-make[1]: *** Waiting for unfinished jobs....
-[ 78%] Built target peachpy
-make: *** [all] Error 2
-Makefile:129: recipe for target 'all' failed
+*** Error in `./lpdnn_app_ssd_mobilenet_zf_deploy': malloc(): memory corruption: 0x00000000037ccba0 ***
+======= Backtrace: =========
+/lib/x86_64-linux-gnu/libc.so.6(+0x777e5)[0x7f71d9f4e7e5]
+/lib/x86_64-linux-gnu/libc.so.6(+0x8213e)[0x7f71d9f5913e]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_malloc+0x54)[0x7f71d9f5b184]
+/usr/lib/x86_64-linux-gnu/libstdc++.so.6(_Znwm+0x18)[0x7f71da544e78]
+./lpdnn_app_ssd_mobilenet_zf_deploy[0x479397]
+./lpdnn_app_ssd_mobilenet_zf_deploy[0x476582]
+./lpdnn_app_ssd_mobilenet_zf_deploy[0x47318c]
+./lpdnn_app_ssd_mobilenet_zf_deploy[0x470ce9]
+./lpdnn_app_ssd_mobilenet_zf_deploy[0x46f32b]
+./lpdnn_app_ssd_mobilenet_zf_deploy[0x46fb57]
+./lpdnn_app_ssd_mobilenet_zf_deploy[0x46ddd6]
+./lpdnn_app_ssd_mobilenet_zf_deploy[0x41acf5]
+./lpdnn_app_ssd_mobilenet_zf_deploy[0x41a219]
+./lpdnn_app_ssd_mobilenet_zf_deploy[0x412ea9]
+./lpdnn_app_ssd_mobilenet_zf_deploy[0x4130eb]
+./lpdnn_app_ssd_mobilenet_zf_deploy[0x412e24]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf0)[0x7f71d9ef7830]
+./lpdnn_app_ssd_mobilenet_zf_deploy[0x411339]
+======= Memory map: ========
+00400000-014cb000 r-xp 00000000 fd:01 5374850                            /home/z638420/wp4-lpdnn-sdk-build/linux_host/models/image/detection/task-pedestrian-detection/models/ssd/mobilenet-v1-zf/lpdnn_app_ssd_mobilenet_zf_deploy
+016cb000-016e8000 r--p 010cb000 fd:01 5374850                            /home/z638420/wp4-lpdnn-sdk-build/linux_host/models/image/detection/task-pedestrian-detection/models/ssd/mobilenet-v1-zf/lpdnn_app_ssd_mobilenet_zf_deploy
+016e8000-016f9000 rw-p 010e8000 fd:01 5374850                            /home/z638420/wp4-lpdnn-sdk-build/linux_host/models/image/detection/task-pedestrian-detection/models/ssd/mobilenet-v1-zf/lpdnn_app_ssd_mobilenet_zf_deploy
+016f9000-017a0000 rw-p 00000000 00:00 0 
+03558000-03821000 rw-p 00000000 00:00 0                                  [heap]
+7f70f4000000-7f70f4021000 rw-p 00000000 00:00 0 
+7f70f4021000-7f70f8000000 ---p 00000000 00:00 0 
+7f70fa4f1000-7f71d6ebe000 rw-p 00000000 00:00 0 
+7f71d6ebe000-7f71d8ebe000 rw-p 00000000 00:00 0 
+7f71d8f28000-7f71d98c8000 rw-p 00000000 00:00 0 
+7f71d98c8000-7f71d98cf000 r-xp 00000000 fd:01 6308698                    /usr/lib/x86_64-linux-gnu/libaec.so.0.0.3
+7f71d98cf000-7f71d9ace000 ---p 00007000 fd:01 6308698                    /usr/lib/x86_64-linux-gnu/libaec.so.0.0.3
+7f71d9ace000-7f71d9acf000 r--p 00006000 fd:01 6308698                    /usr/lib/x86_64-linux-gnu/libaec.so.0.0.3
+7f71d9acf000-7f71d9ad0000 rw-p 00007000 fd:01 6308698                    /usr/lib/x86_64-linux-gnu/libaec.so.0.0.3
+7f71d9ad0000-7f71d9ad3000 r-xp 00000000 fd:01 5247762                    /lib/x86_64-linux-gnu/libdl-2.23.so
+7f71d9ad3000-7f71d9cd2000 ---p 00003000 fd:01 5247762                    /lib/x86_64-linux-gnu/libdl-2.23.so
+7f71d9cd2000-7f71d9cd3000 r--p 00002000 fd:01 5247762                    /lib/x86_64-linux-gnu/libdl-2.23.so
+7f71d9cd3000-7f71d9cd4000 rw-p 00003000 fd:01 5247762                    /lib/x86_64-linux-gnu/libdl-2.23.so
+7f71d9cd4000-7f71d9cd6000 r-xp 00000000 fd:01 6308702                    /usr/lib/x86_64-linux-gnu/libsz.so.2.0.1
+7f71d9cd6000-7f71d9ed5000 ---p 00002000 fd:01 6308702                    /usr/lib/x86_64-linux-gnu/libsz.so.2.0.1
+7f71d9ed5000-7f71d9ed6000 r--p 00001000 fd:01 6308702                    /usr/lib/x86_64-linux-gnu/libsz.so.2.0.1
+7f71d9ed6000-7f71d9ed7000 rw-p 00002000 fd:01 6308702                    /usr/lib/x86_64-linux-gnu/libsz.so.2.0.1
+7f71d9ed7000-7f71da097000 r-xp 00000000 fd:01 5247760                    /lib/x86_64-linux-gnu/libc-2.23.so
+7f71da097000-7f71da297000 ---p 001c0000 fd:01 5247760                    /lib/x86_64-linux-gnu/libc-2.23.so
+7f71da297000-7f71da29b000 r--p 001c0000 fd:01 5247760                    /lib/x86_64-linux-gnu/libc-2.23.so
+7f71da29b000-7f71da29d000 rw-p 001c4000 fd:01 5247760                    /lib/x86_64-linux-gnu/libc-2.23.so
+7f71da29d000-7f71da2a1000 rw-p 00000000 00:00 0 
+7f71da2a1000-7f71da2b7000 r-xp 00000000 fd:01 5247493                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f71da2b7000-7f71da4b6000 ---p 00016000 fd:01 5247493                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f71da4b6000-7f71da4b7000 rw-p 00015000 fd:01 5247493                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f71da4b7000-7f71da629000 r-xp 00000000 fd:01 6291529                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f71da629000-7f71da829000 ---p 00172000 fd:01 6291529                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f71da829000-7f71da833000 r--p 00172000 fd:01 6291529                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f71da833000-7f71da835000 rw-p 0017c000 fd:01 6291529                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f71da835000-7f71da839000 rw-p 00000000 00:00 0 
+7f71da839000-7f71da851000 r-xp 00000000 fd:01 5247577                    /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f71da851000-7f71daa50000 ---p 00018000 fd:01 5247577                    /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f71daa50000-7f71daa51000 r--p 00017000 fd:01 5247577                    /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f71daa51000-7f71daa52000 rw-p 00018000 fd:01 5247577                    /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f71daa52000-7f71daa56000 rw-p 00000000 00:00 0 
+7f71daa56000-7f71daa6f000 r-xp 00000000 fd:01 5247646                    /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f71daa6f000-7f71dac6e000 ---p 00019000 fd:01 5247646                    /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f71dac6e000-7f71dac6f000 r--p 00018000 fd:01 5247646                    /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f71dac6f000-7f71dac70000 rw-p 00019000 fd:01 5247646                    /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f71dac70000-7f71dad78000 r-xp 00000000 fd:01 5242894                    /lib/x86_64-linux-gnu/libm-2.23.so
+7f71dad78000-7f71daf77000 ---p 00108000 fd:01 5242894                    /lib/x86_64-linux-gnu/libm-2.23.so
+7f71daf77000-7f71daf78000 r--p 00107000 fd:01 5242894                    /lib/x86_64-linux-gnu/libm-2.23.so
+7f71daf78000-7f71daf79000 rw-p 00108000 fd:01 5242894                    /lib/x86_64-linux-gnu/libm-2.23.so
+7f71daf79000-7f71db20d000 r-xp 00000000 fd:01 6297265                    /usr/lib/x86_64-linux-gnu/libhdf5_serial.so.10.1.0
+7f71db20d000-7f71db40c000 ---p 00294000 fd:01 6297265                    /usr/lib/x86_64-linux-gnu/libhdf5_serial.so.10.1.0
+7f71db40c000-7f71db411000 r--p 00293000 fd:01 6297265                    /usr/lib/x86_64-linux-gnu/libhdf5_serial.so.10.1.0
+7f71db411000-7f71db416000 rw-p 00298000 fd:01 6297265                    /usr/lib/x86_64-linux-gnu/libhdf5_serial.so.10.1.0
+7f71db416000-7f71db417000 rw-p 00000000 00:00 0 
+7f71db417000-7f71db435000 r-xp 00000000 fd:01 6297286                    /usr/lib/x86_64-linux-gnu/libhdf5_serial_hl.so.10.0.2
+7f71db435000-7f71db634000 ---p 0001e000 fd:01 6297286                    /usr/lib/x86_64-linux-gnu/libhdf5_serial_hl.so.10.0.2
+7f71db634000-7f71db635000 r--p 0001d000 fd:01 6297286                    /usr/lib/x86_64-linux-gnu/libhdf5_serial_hl.so.10.0.2
+7f71db635000-7f71db636000 rw-p 0001e000 fd:01 6297286                    /usr/lib/x86_64-linux-gnu/libhdf5_serial_hl.so.10.0.2
+7f71db636000-7f71db637000 rw-p 00000000 00:00 0 
+7f71db637000-7f71db65d000 r-xp 00000000 fd:01 5247576                    /lib/x86_64-linux-gnu/ld-2.23.so
+7f71db69d000-7f71db842000 rw-p 00000000 00:00 0 
+7f71db85b000-7f71db85c000 rw-p 00000000 00:00 0 
+7f71db85c000-7f71db85d000 r--p 00025000 fd:01 5247576                    /lib/x86_64-linux-gnu/ld-2.23.so
+7f71db85d000-7f71db85e000 rw-p 00026000 fd:01 5247576                    /lib/x86_64-linux-gnu/ld-2.23.so
+7f71db85e000-7f71db85f000 rw-p 00000000 00:00 0 
+7ffda62b3000-7ffda62d5000 rw-p 00000000 00:00 0                          [stack]
+7ffda6308000-7ffda630b000 r--p 00000000 00:00 0                          [vvar]
+7ffda630b000-7ffda630d000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+Aborted (core dumped)
