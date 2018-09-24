@@ -9,19 +9,34 @@ Traceback (most recent call last):
     execution.execute()
   File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/executor/simple_executor.py", line 824, in execute
     worker.create_instance()
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/executor/simple_executor.py", line 224, in create_instance
-    if self.name in self._execution.config.worker_configs.names:
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/executor/simple_executor.py", line 615, in worker_configs
-    for x, y in self._data.get('worker_configs', {}).items()})
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/executor/simple_executor.py", line 615, in <dictcomp>
-    for x, y in self._data.get('worker_configs', {}).items()})
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/api/docker/resources.py", line 92, in from_dict
-    for name, req_data in data.items()}
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/api/docker/resources.py", line 92, in <dictcomp>
-    for name, req_data in data.items()}
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/api/docker/resources.py", line 84, in parse_requirement
-    return RESOURCE_TYPE_TO_CLASS[data['resource_type']].from_dict(data)
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/api/docker/resources.py", line 52, in from_dict
-    return GpuResource(data['card'])
-KeyError: 'card'
+  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/executor/simple_executor.py", line 229, in create_instance
+    instance = app.create_instance(self.name, DockerFromImageConfig(image.name, config, runtime_resources))
+  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/runtime/simple_runtime.py", line 588, in create_instance
+    instance.create(config)
+  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/runtime/simple_runtime.py", line 224, in create
+    self._create_from_image(config)
+  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/runtime/simple_runtime.py", line 187, in _create_from_image
+    raise Exception("Runtime doesn't have access to GPU, cannot start container requiring it")
+Exception: Runtime doesn't have access to GPU, cannot start container requiring it
 
+
+Traceback (most recent call last):
+  File "pkg/com_bonseyes_base/bin/be-admin", line 43, in <module>
+    main.main()
+  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/cli/__main__.py", line 63, in main
+    args.func(args)
+  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/cli/commands/run.py", line 446, in <lambda>
+    parser.set_defaults(func=lambda args: run(root_parser, parser, args))
+  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/cli/commands/run.py", line 335, in run
+    execution.execute()
+  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/executor/simple_executor.py", line 824, in execute
+    worker.create_instance()
+  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/executor/simple_executor.py", line 229, in create_instance
+    instance = app.create_instance(self.name, DockerFromImageConfig(image.name, config, runtime_resources))
+  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/runtime/simple_runtime.py", line 588, in create_instance
+    instance.create(config)
+  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/runtime/simple_runtime.py", line 224, in create
+    self._create_from_image(config)
+  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/runtime/simple_runtime.py", line 187, in _create_from_image
+    raise Exception("Runtime doesn't have access to GPU, cannot start container requiring it")
+Exception: Runtime doesn't have access to GPU, cannot start container requiring it
