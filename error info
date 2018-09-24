@@ -1,42 +1,42 @@
-Traceback (most recent call last):
-  File "pkg/com_bonseyes_base/bin/be-admin", line 43, in <module>
-    main.main()
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/cli/__main__.py", line 63, in main
-    args.func(args)
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/cli/commands/run.py", line 446, in <lambda>
-    parser.set_defaults(func=lambda args: run(root_parser, parser, args))
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/cli/commands/run.py", line 335, in run
-    execution.execute()
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/executor/simple_executor.py", line 824, in execute
-    worker.create_instance()
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/executor/simple_executor.py", line 229, in create_instance
-    instance = app.create_instance(self.name, DockerFromImageConfig(image.name, config, runtime_resources))
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/runtime/simple_runtime.py", line 588, in create_instance
-    instance.create(config)
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/runtime/simple_runtime.py", line 224, in create
-    self._create_from_image(config)
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/runtime/simple_runtime.py", line 187, in _create_from_image
-    raise Exception("Runtime doesn't have access to GPU, cannot start container requiring it")
-Exception: Runtime doesn't have access to GPU, cannot start container requiring it
+application_config:
+  run_opts:
+#    mem_limit: "2G"
+#    memswap_limit: "2G"
+    devices:
+      - /dev/nvidiactl
+      #- /dev/nvidia-uvm-tools
+      - /dev/nvidia-uvm
+      - /dev/nvidia0
+    volumes:
+      /home/z638420/files-pd:
+        bind: /volumes/data
+        mode: ro
+      nvidia_driver_384.130:
+        bind: /usr/local/nvidia
+        mode: ro
 
-
-Traceback (most recent call last):
-  File "pkg/com_bonseyes_base/bin/be-admin", line 43, in <module>
-    main.main()
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/cli/__main__.py", line 63, in main
-    args.func(args)
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/cli/commands/run.py", line 446, in <lambda>
-    parser.set_defaults(func=lambda args: run(root_parser, parser, args))
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/cli/commands/run.py", line 335, in run
-    execution.execute()
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/executor/simple_executor.py", line 824, in execute
-    worker.create_instance()
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/executor/simple_executor.py", line 229, in create_instance
-    instance = app.create_instance(self.name, DockerFromImageConfig(image.name, config, runtime_resources))
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/runtime/simple_runtime.py", line 588, in create_instance
-    instance.create(config)
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/runtime/simple_runtime.py", line 224, in create
-    self._create_from_image(config)
-  File "/home/z638420/Face-Recog/pkg/com_bonseyes_base/lib/impl/runtime/simple_runtime.py", line 187, in _create_from_image
-    raise Exception("Runtime doesn't have access to GPU, cannot start container requiring it")
-Exception: Runtime doesn't have access to GPU, cannot start container requiring it
+worker_configs: 
+  align_worker: 
+    gpu: 
+      resource_type: gpu
+      card: auto
+      
+train_worker: 
+      gpu: 
+        resource_type: gpu
+        card: auto
+    
+benchmark_worker: 
+      gpu: 
+        resource_type: gpu
+        card: auto 
+      
+bonseyescaffe_train_worker: 
+      gpu: 
+        resource_type: gpu
+        card: auto
+      
+bonseyescaffe_benchmark_worker: 
+      gpu: 
+        resource_type: gpu
+        card: auto
